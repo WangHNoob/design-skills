@@ -1,0 +1,11 @@
+[
+  { "input": "我刚装好这套技能包，开始用之前要不要先配置一下", "expectedSkill": "onboarding-calibration", "keywords": ["刚装好", "配置", "开始用"] },
+  { "input": "这个系统文档模板不对，我们团队不是这么分章节的", "expectedSkill": "onboarding-calibration", "keywords": ["模板不对", "章节"] },
+  { "input": "帮我把 system-design 的产出模板调成我们实际在用的", "expectedSkill": "onboarding-calibration", "keywords": ["产出模板", "调成", "我们"] },
+  { "input": "配表提案要的列不是这些，我们的字段口径不一样", "expectedSkill": "onboarding-calibration", "keywords": ["配表", "列", "口径"] },
+
+  { "input": "复盘一下这次交互，把经验沉淀进 skill", "expectedSkill": "skill-evolution", "keywords": ["复盘", "沉淀", "经验"] },
+  { "input": "我想上线一期新的荣耀连战，给我系统方案", "expectedSkill": "system-design", "keywords": ["荣耀连战", "系统方案"] },
+  { "input": "把这批数值落成配表", "expectedSkill": "table-config", "keywords": ["数值", "配表"] },
+  { "input": "帮我设计一个新的战斗技能机制", "expectedSkill": "combat-design", "keywords": ["战斗", "技能"] }
+]

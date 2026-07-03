@@ -1,0 +1,32 @@
+[
+  {
+    "input": "设计一个回合制战斗系统",
+    "expectedSkill": "combat-design",
+    "keywords": ["回合制", "战斗系统"]
+  },
+  {
+    "input": "设计技能体系和伤害公式",
+    "expectedSkill": "combat-design",
+    "keywords": ["技能", "伤害公式"]
+  },
+  {
+    "input": "设计怪物AI行为",
+    "expectedSkill": "combat-design",
+    "keywords": ["怪物", "AI"]
+  },
+  {
+    "input": "设计属性克制关系",
+    "expectedSkill": "combat-design",
+    "keywords": ["属性", "克制"]
+  },
+  {
+    "input": "设计Buff和状态系统",
+    "expectedSkill": "combat-design",
+    "keywords": ["Buff", "状态"]
+  },
+  {
+    "input": "调优暴击率数值",
+    "expectedSkill": "numerical-planning",
+    "keywords": ["暴击率", "数值"]
+  }
+]

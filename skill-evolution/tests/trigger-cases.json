@@ -1,0 +1,42 @@
+[
+  {
+    "input": "复盘一下刚才这次战斗设计，把经验沉淀进 skill",
+    "expectedSkill": "skill-evolution",
+    "keywords": ["复盘", "沉淀", "经验"]
+  },
+  {
+    "input": "把刚才学到的东西固化进 combat-design",
+    "expectedSkill": "skill-evolution",
+    "keywords": ["固化", "学到"]
+  },
+  {
+    "input": "这几个策划 skill 有哪些可以改进的地方，帮我优化",
+    "expectedSkill": "skill-evolution",
+    "keywords": ["改进", "优化", "skill"]
+  },
+  {
+    "input": "更新一下 numerical-planning 这个 skill 的输出模板",
+    "expectedSkill": "skill-evolution",
+    "keywords": ["更新", "模板", "skill"]
+  },
+  {
+    "input": "把经验账本里攒的那几条进化进 skill",
+    "expectedSkill": "skill-evolution",
+    "keywords": ["经验账本", "进化"]
+  },
+  {
+    "input": "设计一个回合制战斗系统的技能和伤害公式",
+    "expectedSkill": "combat-design",
+    "note": "反例：这是具体战斗设计任务，应触发 combat-design，不是元 skill"
+  },
+  {
+    "input": "帮我调优这套装备的属性成长数值",
+    "expectedSkill": "numerical-planning",
+    "note": "反例：具体数值设计，归 numerical-planning，不是元 skill"
+  },
+  {
+    "input": "审阅一下这份策划案有没有跨模块不一致",
+    "expectedSkill": "qa-review",
+    "note": "反例：对策划产出做 QA 审阅，归 qa-review；skill-evolution 只审 skill 自身、不审策划产出"
+  }
+]

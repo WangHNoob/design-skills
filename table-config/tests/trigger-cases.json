@@ -1,0 +1,32 @@
+[
+  {
+    "input": "把刚才的累充档位数值做成配表导出 xlsx",
+    "expectedSkill": "table-config",
+    "keywords": ["配表", "xlsx"]
+  },
+  {
+    "input": "给 _AccumulativePay 这张表新增几个档位的数据",
+    "expectedSkill": "table-config",
+    "keywords": ["表", "新增", "数据"]
+  },
+  {
+    "input": "参照现有成就表新建一张成就条件配表",
+    "expectedSkill": "table-config",
+    "keywords": ["新建", "配表"]
+  },
+  {
+    "input": "把这套奖励数值填进游戏配置表",
+    "expectedSkill": "table-config",
+    "keywords": ["填", "配置表"]
+  },
+  {
+    "input": "设计一条属性成长曲线的计算公式",
+    "expectedSkill": "numerical-planning",
+    "note": "反例：这是数值公式设计，归 numerical-planning，不是配表"
+  },
+  {
+    "input": "把这份战斗设计整理成一个 word 文档",
+    "expectedSkill": "docx",
+    "note": "反例：要的是 Word 文档产出，不是 gamedata 配表"
+  }
+]
