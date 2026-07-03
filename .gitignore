@@ -1,0 +1,9 @@
+# 临时/产物
+*.pyc
+__pycache__/
+.tmp_*
+*.tmp
+.DS_Store
+
+# 运行时生成、不应入库的状态文件
+onboarding-calibration/assets/calibration-status.md
