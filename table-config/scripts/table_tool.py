@@ -26,20 +26,26 @@ import sys
 from pathlib import Path
 from typing import Any
 
-DEFAULT_GAMEDATA = os.environ.get(
-    "TABLE_CONFIG_GAMEDATA", "D:/knowledge-hub/knowledge/gamedata"
-)
+# 配表源目录不写死本地路径：只从环境变量取，未设则为 None，
+# 需由 --grid-json（MCP 通道）或 --gamedata 显式提供。
+DEFAULT_GAMEDATA = os.environ.get("TABLE_CONFIG_GAMEDATA")
 
 
 def _norm(v: Any) -> str:
     return "" if v is None else str(v).strip()
 
 
-def resolve_table_path(table: str, gamedata: str) -> Path:
+def resolve_table_path(table: str, gamedata: str | None) -> Path:
     """把表名或路径解析成真实 xlsx 路径。"""
     p = Path(table)
     if p.suffix.lower() == ".xlsx" and p.is_file():
         return p
+    if not gamedata:
+        raise ValueError(
+            "未指定配表源目录：请走 MCP `--grid-json` 通道，"
+            "或用 `--gamedata` / 环境变量 `TABLE_CONFIG_GAMEDATA` "
+            "指定 <知识库根> 下的 gamedata 目录。"
+        )
     root = Path(gamedata)
     stem = p.stem if p.suffix else table
     candidates = [stem, stem + ".xlsx"]
@@ -283,7 +289,7 @@ def main() -> int:
     except (AttributeError, ValueError):
         pass
     ap = argparse.ArgumentParser(description="配表工具：读模板 / 写 xlsx / 校验")
-    ap.add_argument("--gamedata", default=DEFAULT_GAMEDATA, help="真实 gamedata 目录（模板来源）")
+    ap.add_argument("--gamedata", default=DEFAULT_GAMEDATA, help="gamedata 目录（模板来源）；未设时须显式传本参或设环境变量 TABLE_CONFIG_GAMEDATA")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     r = sub.add_parser("read", help="读模板：表头 + 列映射 + 样例数据")

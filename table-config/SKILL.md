@@ -24,7 +24,7 @@ metadata:
 - **知识库 MCP 只读**：有 `kb_get_table_schema` / `kb_query_table` / `kb_validate_table` / `kb_check_table_value`（读、校验、查值），**没有任何写表工具**。所以配表一律**在本地生成 .xlsx**，知识库只当"格式与数据的权威参照"。
 - **格式的权威来源是原始网格**：用 `kb_get_table_raw`（MCP）取某表的**忠实网格**（array-of-arrays，保留列ID行、所有表头行、列序、空列）。**不要**用 `kb_query_table` 定格式——它把列序/空列转丢了（会出现 `__EMPTY`），只用来学值。
   - **首选 MCP 通道**：`kb_get_table_raw` 输出存成 JSON，传给脚本 `--grid-json`，**全程纯 MCP、不依赖本地文件**。
-  - **回退本地通道**：若 `kb_get_table_raw` 不可用（远程 MCP 尚未部署此工具），脚本可退回读本地 `D:/knowledge-hub/knowledge/gamedata/*.xlsx`（`--table`，可用环境变量 `TABLE_CONFIG_GAMEDATA` 覆盖目录）。
+  - **回退本地通道**：若 `kb_get_table_raw` 不可用（远程 MCP 尚未部署此工具），脚本可退回读本地 gamedata 目录下的 `*.xlsx`（`--table`；目录由 `--gamedata` 或环境变量 `TABLE_CONFIG_GAMEDATA` 指定，即 `<知识库根>/gamedata`）。
 - **表头格式因表而异**（行数、顺序都不同），但**可以逐行照抄**。典型：第 0 行是「列 ID」（如 `7,1,9999,4`，**必须原样保留**），随后若干行是 中文说明 / 字段名 / 类型 / 约束 / 字段名重复，数据行紧跟最后一个「字段名行」。详见 `references/table-format.md`。
 - **值常是编码小语言**（如奖励 `类型,道具ID,数量` 用分号连接多组）。生成前先从同表已有数据学格式，别自造。见 `references/table-format.md`。
 
@@ -75,7 +75,7 @@ python scripts/table_tool.py write --template <表名> --fields "<...>" --data <
 
 - **GATE-格式**：表头/列ID 一律照抄模板，绝不臆造列顺序或格式。字段口径必须来自 `kb_get_table_schema`。
 - **GATE-审批**：正式 xlsx 生成前必须先出 CSV/表格草稿并获用户批准。
-- **GATE-只读源**：绝不写回 `D:/knowledge-hub/.../gamedata`；产物只进 `./output/tables/`。
+- **GATE-只读源**：绝不写回 gamedata 源目录（`TABLE_CONFIG_GAMEDATA` 指向的 `<知识库根>/gamedata`）；产物只进 `./output/tables/`。
 - **GATE-校验**：交付前必过 `validate`（主键）+ 外键存在性抽验；不编造道具ID/表项。
 - 数值本身不在这里设计——需要新数值先回 `numerical-planning`。
 

@@ -1,6 +1,6 @@
 # gamedata 配表格式参考
 
-配表的权威格式来源是 `D:/knowledge-hub/knowledge/gamedata/*.xlsx` 真实文件。
+配表的权威格式来源是 gamedata 目录下的真实 `.xlsx` 文件（`<知识库根>/gamedata`，由环境变量 `TABLE_CONFIG_GAMEDATA` 指定；首选走 MCP `kb_get_table_raw`，无需本地文件）。
 `kb_query_table` 的 JSON 会丢列序和空列身份（出现 `__EMPTY`），**只用来学值、不用来定格式**。
 
 ## 表头结构：行数与顺序因表而异
